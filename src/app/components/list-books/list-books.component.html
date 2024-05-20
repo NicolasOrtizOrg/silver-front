@@ -1,0 +1,27 @@
+<div class="card text-center">
+    <div class="card-header">
+        Buscar Libros
+    </div>
+    <div class="card-header">
+        <form class="d-flex" role="search">
+            <div class="col-8">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input type="checkbox" name="title" id="" class="form-check-input"> Título
+                <input type="checkbox" name="author" id="" class="form-check-input"> Autor
+            </div>
+            <div class="col-4">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-body container-size m-auto">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div *ngFor="let b of books" class="col">
+                <app-card-book [book]="b"></app-card-book>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+
+    </div>
+</div>

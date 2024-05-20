@@ -1,0 +1,4 @@
+.container-size{
+    width: calc(100% - 20%);
+    height: calc(100% - 30%);
+}

@@ -1,0 +1,48 @@
+
+img{
+    /* max-width: 140px; */
+    max-height: 240px;
+    object-fit: contain;
+    border-radius: 5%;
+}
+
+.card-container{
+    border-radius: 2.5%;
+}
+
+/* Book */
+.book-title{
+    font-size: 25px;
+    text-decoration: none;
+}
+
+/* Options Button */
+.btn-options-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-options {
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.btn-options:hover {
+    border: .1 solid gray;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.badge-size{
+    margin-top: 15px;
+    /* margin-left: -20px;  */
+    font-size: 12px;
+}
+
+.text-bg-custom{
+    background-color: rgba(128, 128, 128, 0.11);
+}
