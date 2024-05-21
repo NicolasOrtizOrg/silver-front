@@ -10,20 +10,33 @@ import { BookService } from 'src/app/services/book.service';
 export class ListBooksComponent implements OnInit{
 
   books: Book[] = [];
+
+  keyword: string = "";
   
   ngOnInit(): void {
-    this.getBooks();
+    this.getAllActiveBooks();
   }
 
   constructor(private bookService: BookService) {
   }
 
   
-  private getBooks(): void{
+  getAllActiveBooks(): void{
     this.bookService.getAllActiveBooks().subscribe(
       data => {
         this.books = data.content
         console.log(data.content);
+      },
+      err => console.log(err)
+    )
+  }
+  
+  getBooksByKeyword(): void{
+    this.bookService.getBooksByKeyword(this.keyword).subscribe(
+      data => {
+        this.books = data.content
+        console.log(data.content);
+        this.keyword = "";
       },
       err => console.log(err)
     )

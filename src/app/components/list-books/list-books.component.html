@@ -1,46 +1,65 @@
 <div class="card text-center bg-success bg-gradient text-bg-dark">
-    <div class="card-header">
-        Buscar Libros
-    </div>
-    <div class="card-header">
-        <br>
-        <form class="d-flex" role="search">
-            <!-- Filtros Checkbox -->
-            <div class="col-4">
-                <div class="d-flex align-items-start">
-                    <div class="mr form-check form-switch">
-                        <input type="checkbox" name="book-title" id="book-title" class="form-check-input mr">
-                        <label class="form-check-label" for="book-title">Título</label>
-                    </div>
-                    <div class="mr form-check form-switch">
-                        <input type="checkbox" name="book-author" id="book-author" class="form-check-input mr">
-                        <label class="form-check-label" for="book-author">Autor</label>
-                    </div>
-                </div>
-            </div>
-            <!-- Input Búsqueda -->
-            <div class="col-4">
-                <input class="bg-dark text-bg-dark search-input form-control" type="search"
-                    placeholder="Buscar por título o autor">
-                <br>
-            </div>
-            <!-- Botón Buscar -->
-            <div class="col-4 d-flex flex-column justify-content-start align-items-start">
-                <button class="ml btn bg-dark bg-gradient text-bg-dark" type="submit">Buscar</button>
-            </div>
-
-        </form>
-    </div>
-    <!-- Body -->
-    <div class="card-body container-size m-auto">
-        <!-- Listar Libros -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div *ngFor="let b of books" class="col">
-                <app-card-book [book]="b"></app-card-book>
-            </div>
+  <div class="card-header">Buscar Libros</div>
+  <div class="card-header">
+    <br />
+    <form class="d-flex" role="search">
+      <!-- Filtros Checkbox -->
+      <div class="col-4">
+        <div class="d-flex align-items-start">
+          <div class="mr form-check form-switch">
+            <input
+              type="checkbox"
+              name="book-title"
+              id="book-title"
+              class="form-check-input mr"
+            />
+            <label class="form-check-label" for="book-title">Título</label>
+          </div>
+          <div class="mr form-check form-switch">
+            <input
+              type="checkbox"
+              name="book-author"
+              id="book-author"
+              class="form-check-input mr"
+            />
+            <label class="form-check-label" for="book-author">Autor</label>
+          </div>
         </div>
+      </div>
+      <!-- Input Búsqueda -->
+      <div class="col-4">
+        <input
+          [(ngModel)]="keyword"
+          class="bg-dark text-bg-dark search-input form-control"
+          type="text"
+          name="search"
+          placeholder="Buscar por título o autor"
+          autocomplete="off"
+        />
+        <br />
+      </div>
+      <!-- Botón Buscar -->
+      <div
+        class="col-4 d-flex flex-column justify-content-start align-items-start"
+      >
+        <button
+          (click)="getBooksByKeyword()"
+          class="ml btn bg-dark bg-gradient text-bg-dark"
+          type="submit"
+        >
+          Buscar
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- Body -->
+  <div class="card-body container-size m-auto">
+    <!-- Listar Libros -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let b of books" class="col">
+        <app-card-book [book]="b"></app-card-book>
+      </div>
     </div>
-    <div class="card-footer text-body-secondary">
-
-    </div>
+  </div>
+  <div class="card-footer text-body-secondary"></div>
 </div>

@@ -18,5 +18,9 @@ export class BookService {
     return this.http.get<Book[]>(this.URL, { params: { page } });
   }
 
+  getBooksByKeyword(keyword: string, page: number = 0): Observable<any> {
+    return this.http.get<Book[]>(`${this.URL}/filter`, { params: { page, keyword } });
+  }
+
 
 }
