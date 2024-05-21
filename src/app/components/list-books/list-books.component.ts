@@ -20,6 +20,12 @@ export class ListBooksComponent implements OnInit{
   constructor(private bookService: BookService) {
   }
 
+  /*
+  FALTA:
+    - Agregar bien las busquedas
+    - Agregar las validaciones con los checkbox
+    - Hacer busquedas sin ngModel, usar onSubmit
+  */
   
   getAllActiveBooks(): void{
     this.bookService.getAllActiveBooks().subscribe(
