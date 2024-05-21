@@ -2,3 +2,24 @@
     width: calc(100% - 20%);
     height: calc(100% - 30%);
 }
+
+.bg-custom2{
+    background-color: #1DB954;
+    color: white;
+}
+
+.search-input{
+    border: none;
+}
+
+.search-input:focus{
+    box-shadow: 0 .15rem .375rem rgba(0, 0, 0, 0.151);
+}
+
+.search-input::placeholder{
+    color: rgb(255, 255, 255);
+}
+
+.mr{
+    margin-right: 10px;
+}

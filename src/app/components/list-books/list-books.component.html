@@ -1,17 +1,34 @@
-<div class="card text-center">
+<div class="card text-center bg-success bg-gradient text-bg-dark">
     <div class="card-header">
         Buscar Libros
     </div>
     <div class="card-header">
         <form class="d-flex" role="search">
-            <div class="col-8">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <input type="checkbox" name="title" id="" class="form-check-input"> Título
-                <input type="checkbox" name="author" id="" class="form-check-input"> Autor
-            </div>
+
+            <div class="col-4"></div>
+
             <div class="col-4">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="row">
+                    <input class="bg-dark text-bg-dark search-input form-control me-2" type="search"
+                        placeholder="Buscar por título o autor">
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                    <div class="form-check">
+                        <input type="checkbox" name="book-title" id="book-title" class="form-check-input mr">
+                        <label class="form-check-label" for="book-title">Título</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" name="book-author" id="book-author" class="form-check-input mr">
+                        <label class="form-check-label" for="book-author">Autor</label>
+                    </div>
+                </div>
+
             </div>
+
+            <div class="col-4">
+                <button class="btn bg-dark bg-gradient text-bg-dark" type="submit">Buscar</button>
+            </div>
+
         </form>
     </div>
     <div class="card-body container-size m-auto">
