@@ -13,19 +13,28 @@ export class PlaylistService {
   private URL: string = Environments.URL_BASE + "/playlists";
 
   private playlistUpdated = new Subject<void>();
-  
+
   constructor(private http: HttpClient) { }
 
   // -----------------------------------------
-  
+
   getAllPlaylists(): Observable<any> {
     return this.http.get<Playlist[]>(this.URL);
+  }
+
+  addBook(bookId: number, playlistId: number): Observable<any> {
+    return this.http.post(`${this.URL}/add-book`, null, {
+      params: {
+        bookId, 
+        playlistId
+      }
+    })
   }
 
   createPlaylist(playlist: CreatePlaylist): Observable<any> {
     return this.http.post(this.URL, playlist)
   }
-  
+
   deletePlaylist(playlistId: number): Observable<any> {
     return this.http.delete(`${this.URL}/${playlistId}`)
   }
@@ -33,7 +42,7 @@ export class PlaylistService {
   // -----------------------------------------
 
   // Notificar cambios en la playlist
-  nofityPlaylistUpdated(){
+  nofityPlaylistUpdated() {
     this.playlistUpdated.next();
   }
 

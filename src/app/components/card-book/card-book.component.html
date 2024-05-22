@@ -7,7 +7,8 @@
                 &#x22EE; <!-- Icono de 3 puntos -->
             </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">Agregar a Playlist</a></li>
+                <button class="dropdown-item" data-bs-toggle="modal" [attr.data-bs-target]="'#playlistsModal-' + book.id">Agregar a
+                    Playlist</button>
             </ul>
         </div>
     </span>
@@ -22,6 +23,29 @@
                     {{book.author.name}}
                 </span>
             </button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- MODAL Playlists -->
+<div class="modal fade" [id]="'playlistsModal-' + book.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{book.id}}
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar a playlist</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let p of playlists" class="list-group mb-1">
+                    <button (click)="addBookToPlaylist(book.id, p.id)" class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">{{p.name}}</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
 </div>
