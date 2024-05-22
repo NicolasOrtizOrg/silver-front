@@ -1,0 +1,14 @@
+<div class="card text-center bg-success bg-gradient text-bg-dark">
+    <h1 class="card-header">Playlists</h1>
+    <div class="card-header d-flex justify-content-center">
+        <button class="btn btn-success border border-secondary-subtle">Crear playlist</button>
+    </div>
+    <!-- Body -->
+    <div class="card-body container-size m-auto">
+        <!-- Listar Playlists -->
+        <div class="d-flex flex-wrap justify-content-center gap-5">
+            <app-card-playlist *ngFor="let p of playlists" [playlist]="p"></app-card-playlist>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary"></div>
+</div>

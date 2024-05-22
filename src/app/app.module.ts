@@ -10,6 +10,7 @@ import { CardBookComponent } from './components/card-book/card-book.component';
 import { CardPlaylistComponent } from './components/card-playlist/card-playlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ListPlaylistsComponent } from './components/list-playlists/list-playlists.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     BookComponent,
     ListBooksComponent,
     CardBookComponent,
-    CardPlaylistComponent
+    CardPlaylistComponent,
+    ListPlaylistsComponent
   ],
   imports: [
     BrowserModule,

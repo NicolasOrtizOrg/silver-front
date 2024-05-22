@@ -1,0 +1,17 @@
+
+/* Options Button */
+
+.btn-options {
+    border: 1px solid gray;
+    border-radius: 50%;
+    background: none;
+    color: #070707;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.btn-options:hover {
+    border: .1 solid gray;
+    background-color: rgba(255, 255, 255, 0.1);
+}
