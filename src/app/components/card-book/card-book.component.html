@@ -1,14 +1,23 @@
 <div class="card-container text-bg-dark bg-dark bg-gradient">
-
     <span class="d-flex justify-content-end">
         <div class="dropdown">
             <button class="btn text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                &#x22EE; <!-- Icono de 3 puntos -->
+                &#x22EE;
+                <!-- Icono de 3 puntos -->
             </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" data-bs-toggle="modal" [attr.data-bs-target]="'#playlistsModal-' + book.id">Agregar a
-                    Playlist</button>
+                <button class="dropdown-item" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#playlistsModal-' + book.id">
+                    Agregar a Playlist
+                </button>
+                <button class="dropdown-item" data-bs-toggle="modal" 
+                    [attr.data-bs-target]="'#editBook-' + book.id">
+                    Editar
+                </button>
+                <button class="dropdown-item">
+                    Eliminar
+                </button>
             </ul>
         </div>
     </span>
@@ -16,35 +25,74 @@
     <img [src]="book.image || noImage" alt="Book Image" />
 
     <div class="card-body">
-        <a href="#" class="book-title card-title">{{ book.title }}</a>
+        <button data-bs-toggle="modal" [attr.data-bs-target]="'#infoCompleta-' + book.id" class="btn book-title card-title">{{ book.title }}</button>
         <div class="">
             <button class="btn">
                 <span class="badge badge-size text-bg-custom">
-                    {{book.author.name}}
+                    {{ book.author.name }}
                 </span>
             </button>
         </div>
     </div>
 </div>
 
-
-
 <!-- MODAL Playlists -->
-<div class="modal fade" [id]="'playlistsModal-' + book.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    {{book.id}}
+<div class="modal fade" [id]="'playlistsModal-' + book.id" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    {{ book.id }}
     <div class="modal-dialog">
         <div class="modal-content bg-dark">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar a playlist</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Agregar a playlist
+                </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div *ngFor="let p of playlists" class="list-group mb-1">
-                    <button (click)="addOrCreateBook(book, p.id)" class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">{{p.name}}</button>
+                    <button (click)="addOrCreateBook(book, p.id)"
+                        class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">
+                        {{ p.name }}
+                    </button>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- MODAL Info completa -->
+<div class="modal fade" [id]="'infoCompleta-' + book.id" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    {{ book.id }}
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Información del libro
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <div class="list-group-item list-group-item-action bg-dark text-bg-dark">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{book.title}}</h5>
+                        <br>
+                        <small class="text-body-white ">{{book.publishedDate}}</small>
+                      </div>
+                      <img [src]="book.image || noImage" alt="">
+                      <p class="mb-1">{{book.description}}</p>
+                      <br>
+                      <small class="text-body-white">{{book.author.name}}</small>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>

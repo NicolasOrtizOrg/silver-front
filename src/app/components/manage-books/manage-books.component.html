@@ -1,0 +1,67 @@
+<div class="card text-center bg-success bg-gradient text-bg-dark">
+    <h1 class="card-header">Crear y editar libros</h1>
+    <!-- Body -->
+    <div class="card-body container-size m-auto">
+
+        <div class="container" style="max-width: 500px;">
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="title" class="form-label">Título</label>
+                    <input [(ngModel)]="book.title" type="text" name="title" class="form-control" id="title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input [(ngModel)]="book.isbn" type="text" name="isbn" class="form-control" id="isbn" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="publishedDate" class="form-label">Fecha publicación</label>
+                    <input [(ngModel)]="book.publishedDate" type="date" name="publishedDate" class="form-control"
+                        id="publishedDate" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Seleccione una fecha
+                    </div>
+                </div>
+                <div>
+                    <label for="description" class="form-label">Descripción</label>
+                    <textarea [(ngModel)]="book.description" name="description" class="form-control"
+                        id="description"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="image" class="form-label">Link imagen</label>
+                    <input [(ngModel)]="book.image" type="text" name="image" class="form-control" id="image" required>
+                    <div class="invalid-feedback">
+                        Seleccione una imagen
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="authorName" class="form-label">Autor</label>
+                    <select class="form-select" id="authorName" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>...</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Elige un autor y escribe su nombre.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="authorName" class="form-label">Autor nombre</label>
+                    <input [(ngModel)]="book.authorName" type="text" name="autor" class="form-control" id="authorName"
+                        required>
+                    <div class="invalid-feedback">
+                        Escribe un autor o eligelo.
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button (click)="createBook()" class="btn btn-dark bg-gradient" type="submit">Guardar autor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary"></div>
+</div>

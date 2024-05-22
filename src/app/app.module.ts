@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListPlaylistsComponent } from './components/list-playlists/list-playlists.component';
 import { HeadersInterceptor } from './integration/headers.interceptor';
+import { ManageBooksComponent } from './components/manage-books/manage-books.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeadersInterceptor } from './integration/headers.interceptor';
     ListBooksComponent,
     CardBookComponent,
     CardPlaylistComponent,
-    ListPlaylistsComponent
+    ListPlaylistsComponent,
+    ManageBooksComponent
   ],
   imports: [
     BrowserModule,
