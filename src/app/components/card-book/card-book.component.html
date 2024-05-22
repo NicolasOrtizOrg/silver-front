@@ -40,7 +40,7 @@
             </div>
             <div class="modal-body">
                 <div *ngFor="let p of playlists" class="list-group mb-1">
-                    <button (click)="addBookToPlaylist(book.id, p.id)" class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">{{p.name}}</button>
+                    <button (click)="addOrCreateBook(book, p.id)" class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">{{p.name}}</button>
                 </div>
             </div>
             <div class="modal-footer">

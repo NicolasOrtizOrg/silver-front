@@ -15,6 +15,7 @@ export class ListBooksComponent implements OnInit {
   bookParams: BookParams = new BookParams();
 
   params: any = {};
+  isLoading: boolean = false;
 
   // keyword: string = "";
 
@@ -42,22 +43,35 @@ export class ListBooksComponent implements OnInit {
   }
 
   getAllActiveBooks(): void {
+    this.isLoading = true;
     this.bookService.getAllActiveBooks().subscribe(
-      data => this.books = data.content,
+      data => {
+        this.books = data.content;
+        this.isLoading = false;
+      },
       err => console.log(err)
     );
   }
 
   getBooksByKeyword(keyword: string): void {
+    this.isLoading = true;
     this.bookService.getBooksByKeyword(keyword).subscribe(
-      data => this.books = data.content,
+      data => {
+        this.books = data.content;
+        this.isLoading = false;
+      },
       err => console.log(err)
     )
   }
 
   getBooksByAuthor(authorName: string): void {
     this.bookService.getBooksByAuthor(authorName).subscribe(
-      data => this.books = data.content,
+      data => {
+        console.log(data.content);
+        
+        this.books = data.content;
+        this.isLoading = false;
+      },
       err => console.log(err)
     )
   }

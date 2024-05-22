@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Environments } from '../environment';
 import { Book } from '../models/Book';
 import { Observable } from 'rxjs';
+import { CreateBook } from '../models/CreateBook';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class BookService {
 
   getBooksByAuthor(authorName: string, page: number = 0): Observable<any> {
     return this.http.get<Book[]>(`${this.URL}/filter/author`, { params: { authorName, page } });
+  }
+  
+  createBook(newBook: CreateBook): Observable<any> {
+    return this.http.post<Book>(this.URL, newBook);
   }
 
 
