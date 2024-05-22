@@ -16,26 +16,6 @@ img{
     text-decoration: none;
 }
 
-/* Options Button */
-.btn-options-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn-options {
-    border: none;
-    border-radius: 50%;
-    background: none;
-    color: #ffffff;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-}
-
-.btn-options:hover {
-    border: .1 solid gray;
-    background-color: rgba(255, 255, 255, 0.1);
-}
 
 /* Badge */
 .badge-size{

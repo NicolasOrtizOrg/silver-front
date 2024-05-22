@@ -1,17 +1,17 @@
 
-/* Options Button */
-
-.btn-options {
-    border: 1px solid gray;
-    border-radius: 50%;
-    background: none;
-    color: #070707;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+/* Card Image */
+.card-img-size{
+    width: 100px;
+    margin: auto;
 }
 
-.btn-options:hover {
-    border: .1 solid gray;
-    background-color: rgba(255, 255, 255, 0.1);
+/* Badge */
+.badge-size{
+    margin-top: 15px;
+    /* margin-left: -20px;  */
+    font-size: 12px;
+}
+
+.text-bg-custom{
+    background-color: rgba(128, 128, 128, 0.11);
 }

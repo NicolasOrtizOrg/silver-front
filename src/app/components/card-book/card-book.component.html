@@ -1,13 +1,16 @@
 <div class="card-container text-bg-dark bg-dark bg-gradient">
-    
-    <div class="btn-options-container">
-        <button class="btn-options" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <strong>:</strong>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-dark">
-            <button class="dropdown-item">Guardar en Playlist</button>
-        </ul>
-    </div>
+
+    <span class="d-flex justify-content-end">
+        <div class="dropdown">
+            <button class="btn text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                &#x22EE; <!-- Icono de 3 puntos -->
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Agregar a Playlist</a></li>
+            </ul>
+        </div>
+    </span>
 
     <img [src]="book.image || noImage" alt="Book Image" />
 

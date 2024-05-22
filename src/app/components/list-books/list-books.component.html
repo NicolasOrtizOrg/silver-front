@@ -4,19 +4,8 @@
     <br />
     <form #searchForm="ngForm" (ngSubmit)="getBooks(searchForm)" class="d-flex" role="search">
       <!-- Filtros Checkbox -->
-      <div class="col-4">
-        <div class="d-flex align-items-start">
-          <!-- <div class="mr form-check form-switch">
-            <input
-              ngModel
-              type="checkbox"
-              name="title"
-              checked
-              id="book-title"
-              class="form-check-input mr"
-            />
-            <label class="form-check-label" for="title">Título</label>
-          </div> -->
+      <div class="col-4 d-flex justify-content-center">
+        <div class="">
           <div class="mr form-check form-switch">
             <input
               ngModel
@@ -26,6 +15,18 @@
               class="form-check-input mr"
             />
             <label class="form-check-label" for="author">Autor</label>
+          </div>
+          <div class="mr form-check form-switch">
+            <input
+              ngModel
+              disabled
+              type="checkbox"
+              name="title"
+              checked
+              id="book-title"
+              class="form-check-input mr"
+            />
+            <label class="form-check-label" for="title">Otros...</label>
           </div>
         </div>
       </div>

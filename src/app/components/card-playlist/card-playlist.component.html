@@ -1,18 +1,26 @@
-<div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header d-flex justify-content-end">
-        <div class="btn-group">
-            <button type="button" class="text-white btn btn-options dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <button class="dropdown-item">Eliminar</button>
-            </ul>
+
+<div class="card text-bg-dark mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="playlist.firstBookImage || noImage" class="card-img-size img-fluid rounded-start" alt="...">
         </div>
+        <div class="col-md-8">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title">{{playlist.name}}</h5>
+                <span class="badge text-bg-custom position-absolute bottom-0 mb-2">123 libros</span>
+                <span class="position-absolute bottom-0 end-0">
+                    <div class="dropdown">
+                        <button class="btn text-white" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            &#x22EE; <!-- Icono de 3 puntos -->
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+        </div>
+
     </div>
-    <div class="card-body">
-        <h5 class="card-title">{{playlist.name}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-    </div>
-    <div class="card-footer bg-transparent">123 libros</div>
 </div>
