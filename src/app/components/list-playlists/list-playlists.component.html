@@ -1,7 +1,10 @@
 <div class="card text-center bg-success bg-gradient text-bg-dark">
     <h1 class="card-header">Playlists</h1>
     <div class="card-header d-flex justify-content-center">
-        <button class="btn btn-dark bg-gradient">Crear playlist</button>
+        <form #newPlaylist="ngForm" (ngSubmit)="createPlaylist(newPlaylist)" class="d-flex">
+            <input type="text" placeholder="Nombre" name="playlistName" ngModel class="bg-dark text-bg-dark form-control search-input mr" autocomplete="off">
+            <button class="btn btn-dark bg-gradient" style="white-space: nowrap;">Crear playlist</button>
+        </form>
     </div>
     <!-- Body -->
     <div class="card-body container-size m-auto">

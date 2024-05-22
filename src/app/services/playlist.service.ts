@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Environments } from '../environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Playlist } from '../models/Playlist';
+import { CreatePlaylist } from '../models/CreatePlaylist';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,35 @@ import { Playlist } from '../models/Playlist';
 export class PlaylistService {
 
   private URL: string = Environments.URL_BASE + "/playlists";
-  private headers: HttpHeaders = new HttpHeaders().set("userId", "1");
+
+  private playlistUpdated = new Subject<void>();
   
   constructor(private http: HttpClient) { }
 
+  // -----------------------------------------
   
   getAllPlaylists(): Observable<any> {
-    return this.http.get<Playlist[]>(this.URL, { headers: this.headers });
+    return this.http.get<Playlist[]>(this.URL);
+  }
+
+  createPlaylist(playlist: CreatePlaylist): Observable<any> {
+    return this.http.post(this.URL, playlist)
+  }
+  
+  deletePlaylist(playlistId: number): Observable<any> {
+    return this.http.delete(`${this.URL}/${playlistId}`)
+  }
+
+  // -----------------------------------------
+
+  // Notificar cambios en la playlist
+  nofityPlaylistUpdated(){
+    this.playlistUpdated.next();
+  }
+
+  // Suscribirse para escuchar los cambis en la playlist
+  getPlaylistUpdatedListener(): Observable<void> {
+    return this.playlistUpdated.asObservable();
   }
 
 }
