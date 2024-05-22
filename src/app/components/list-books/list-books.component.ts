@@ -26,8 +26,7 @@ export class ListBooksComponent implements OnInit {
 
   /*
   FALTA:
-    - Agregar bien las busquedas
-    - Agregar las validaciones con los checkbox
+    - Agregar búsquedas dinámicas
   */
 
   getBooks(form: NgForm) {
@@ -36,7 +35,7 @@ export class ListBooksComponent implements OnInit {
     if (form.value.author) {
       const authorName = form.value.keyword;
       console.log(form.value.keyword);
-      
+
       this.getBooksByAuthor(authorName);
     }
     else this.getBooksByKeyword(keyword);
@@ -44,11 +43,8 @@ export class ListBooksComponent implements OnInit {
 
   getAllActiveBooks(): void {
     this.bookService.getAllActiveBooks().subscribe(
-      (data) => {
-        this.books = data.content;
-        console.log(data.content);
-      },
-      (err) => console.log(err)
+      data => this.books = data.content,
+      err => console.log(err)
     );
   }
 
