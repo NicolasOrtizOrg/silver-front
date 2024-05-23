@@ -34,6 +34,10 @@ export class BookService {
   updateBook(bookId: number, newBook: CreateBook): Observable<any> {
     return this.http.put<Book>(`${this.URL}/${bookId}`, newBook);
   }
+  
+  changeStatus(bookId: number, status: boolean): Observable<any> {
+    return this.http.patch(`${this.URL}/${bookId}/${status}`, null);
+  }
 
 
 }

@@ -86,7 +86,7 @@
                     <td>{{b.isbn}}</td>
                     <td>
                         <button (click)="setEditable(b)" class="btn btn-secondary mr">Editar</button>
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button (click)="deleteBook(b.id)" class="btn btn-danger">Eliminar</button>
                     </td>
                 </tr>
             </tbody>

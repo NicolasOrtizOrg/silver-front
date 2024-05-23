@@ -22,8 +22,8 @@ export class CardBookComponent implements OnInit {
     this.getPlaylists();
   }
 
-  // Cambiar método cuando cree el formulario de CREAR LIBROS
   // Hacer: Cambiar esto para LLAMAR AL METODO PARA CREAR LIBROS.
+  // Cambiar método cuando cree el formulario de CREAR LIBROS
   // No hacerlo desde acá. Solución temporal
   addOrCreateBook(book: Book, playlistId: number) {
     let newBook = this.mapToCreateDto(book);

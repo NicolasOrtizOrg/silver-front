@@ -17,7 +17,7 @@ export class ManageBooksComponent implements OnInit {
   // Estados actuales
   isUpdating: boolean = false; // Estamos en modo edición?
   currentBookId: number; // El ID del libro a actualizar
-  
+
   // Paginación
   currentPage: number = 0;
   totalPages: Array<number>;
@@ -43,7 +43,7 @@ export class ManageBooksComponent implements OnInit {
     if (this.isUpdating && this.currentBookId != -1) {
       this.updateBook();
     }
-    else{
+    else {
       this.createBook();
     }
   }
@@ -68,6 +68,18 @@ export class ManageBooksComponent implements OnInit {
     )
   }
 
+  deleteBook(bookId: number) {
+    if (confirm("¿Seguro que deseas eliminar el libro? Soft Delete")) {
+      this.bookService.changeStatus(bookId, false).subscribe(
+        data => {
+          alert("Eliminado correctamente");
+          this.getAllBooks(this.currentPage);
+        },
+        err => alert("Error al eliminar")
+      )
+    }
+  }
+
   //----------------------------
 
   setEditable(book: Book) {
@@ -84,13 +96,13 @@ export class ManageBooksComponent implements OnInit {
   }
 
   //----------------------------
-  
+
   changePage(i: number) {
     this.currentPage = i;
     this.getAllBooks(i);
   }
 
-  setPagination(data: any){
+  setPagination(data: any) {
     this.totalPages = new Array(data.totalPages);
     this.totalPagesLength = this.totalPages.length;
   }

@@ -11,21 +11,15 @@
                     [attr.data-bs-target]="'#playlistsModal-' + book.id">
                     Agregar a Playlist
                 </button>
-                <button class="dropdown-item" data-bs-toggle="modal" 
-                    [attr.data-bs-target]="'#editBook-' + book.id">
-                    Editar
-                </button>
-                <button class="dropdown-item">
-                    Eliminar
-                </button>
             </ul>
         </div>
     </span>
 
-    <img [src]="book.image || noImage" alt="Book Image" />
+    <img [src]="book.image" (error)="book.image = noImage" alt="Book Image" />
 
     <div class="card-body">
-        <button data-bs-toggle="modal" [attr.data-bs-target]="'#infoCompleta-' + book.id" class="btn book-title card-title">{{ book.title }}</button>
+        <button data-bs-toggle="modal" [attr.data-bs-target]="'#infoCompleta-' + book.id"
+            class="btn book-title card-title">{{ book.title }}</button>
         <div class="">
             <button class="btn">
                 <span class="badge badge-size text-bg-custom">
@@ -82,17 +76,17 @@
             <div class="modal-body">
                 <div class="list-group">
                     <div class="list-group-item list-group-item-action bg-dark text-bg-dark">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{book.title}}</h5>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{book.title}}</h5>
+                            <br>
+                            <small class="text-body-white ">{{book.publishedDate}}</small>
+                        </div>
+                        <img [src]="book.image || noImage" alt="">
+                        <p class="mb-1">{{book.description}}</p>
                         <br>
-                        <small class="text-body-white ">{{book.publishedDate}}</small>
-                      </div>
-                      <img [src]="book.image || noImage" alt="">
-                      <p class="mb-1">{{book.description}}</p>
-                      <br>
-                      <small class="text-body-white">{{book.author.name}}</small>
+                        <small class="text-body-white">{{book.author.name}}</small>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
