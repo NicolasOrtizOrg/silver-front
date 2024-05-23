@@ -31,8 +31,6 @@ export class CardBookComponent implements OnInit {
     if (book.id == -1) {
       this.bookService.createBook(newBook).subscribe(
         data => {
-          console.log("se guardara la id: " + data.id);
-          
           this.addBook(data.id, playlistId)
           newBook = new CreateBook();
         },
@@ -49,8 +47,6 @@ export class CardBookComponent implements OnInit {
   }
 
   addBook(bookId: number, playlistId: number) {
-    console.log("LLEGA EL ID: " + bookId);
-    
     this.playlistService.addBook(bookId, playlistId).subscribe(
       data => {
         alert("Agregado correctamente");
@@ -60,7 +56,6 @@ export class CardBookComponent implements OnInit {
     )
   }
 
-  // -----------------------------------
   mapToCreateDto(book: Book): CreateBook {
     const newBook = new CreateBook();
     newBook.title = book.title;

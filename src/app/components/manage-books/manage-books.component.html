@@ -1,5 +1,11 @@
-<div class="card text-center bg-success bg-gradient text-bg-dark">
-    <h1 class="card-header">Crear y editar libros</h1>
+<div class="card text-center bg-success bg-gradient text-bg-dark" id="book-form">
+    <div class="card-header">
+        <h1>Crear y editar libros</h1>
+        <div *ngIf="isUpdating">
+            <h4>Estás en modo <span class="badge text-bg-primary">Edición</span></h4>
+            <button (click)="cleanStates()" class="btn btn-danger" style="width: 100px;">Salir</button>
+        </div>
+    </div>
     <!-- Body -->
     <div class="card-body container-size m-auto">
 
@@ -58,10 +64,35 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button (click)="createBook()" class="btn btn-dark bg-gradient" type="submit">Guardar autor</button>
+                    <button (click)="createOrUpdateBook()" class="btn btn-dark bg-gradient" type="submit">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="card-footer text-body-secondary"></div>
+    <div class="card-footer text-body-secondary">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let b of books">
+                    <td>{{b.id}}</td>
+                    <td>{{b.title}}</td>
+                    <td>{{b.isbn}}</td>
+                    <td>
+                        <button (click)="setEditable(b)" class="btn btn-secondary mr">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer text-body-secondary">
+
+    </div>
 </div>

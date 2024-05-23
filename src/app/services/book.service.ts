@@ -30,6 +30,10 @@ export class BookService {
   createBook(newBook: CreateBook): Observable<any> {
     return this.http.post<Book>(this.URL, newBook);
   }
+  
+  updateBook(bookId: number, newBook: CreateBook): Observable<any> {
+    return this.http.put<Book>(`${this.URL}/${bookId}`, newBook);
+  }
 
 
 }
