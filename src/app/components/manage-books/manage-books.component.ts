@@ -17,16 +17,24 @@ export class ManageBooksComponent implements OnInit {
   // Estados actuales
   isUpdating: boolean = false; // Estamos en modo edición?
   currentBookId: number; // El ID del libro a actualizar
+  
+  // Paginación
+  currentPage: number = 0;
+  totalPages: Array<number>;
+  totalPagesLength: number;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    this.getAllBooks();
+    this.getAllBooks(this.currentPage);
   }
 
-  getAllBooks() {
-    this.bookService.getAllActiveBooks().subscribe(
-      data => this.books = data.content,
+  getAllBooks(page: number) {
+    this.bookService.getAllActiveBooks(page).subscribe(
+      data => {
+        this.books = data.content;
+        this.setPagination(data);
+      },
       err => console.log(err)
     )
   }
@@ -76,6 +84,16 @@ export class ManageBooksComponent implements OnInit {
   }
 
   //----------------------------
+  
+  changePage(i: number) {
+    this.currentPage = i;
+    this.getAllBooks(i);
+  }
+
+  setPagination(data: any){
+    this.totalPages = new Array(data.totalPages);
+    this.totalPagesLength = this.totalPages.length;
+  }
 
   scrollToForm(): void {
     const element = document.getElementById('book-form');

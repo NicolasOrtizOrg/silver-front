@@ -11,16 +11,21 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class ListBooksComponent implements OnInit {
 
+  // DTOS
   books: Book[] = [];
   bookParams: BookParams = new BookParams();
 
+  // 
   params: any = {};
   isLoading: boolean = false;
 
-  // keyword: string = "";
+  // Paginación
+  currentPage: number = 0;
+  totalPages: Array<number>;
+  totalPagesLength: number;
 
   ngOnInit(): void {
-    this.getAllActiveBooks();
+    this.getAllActiveBooks(this.currentPage);
   }
 
   constructor(private bookService: BookService) { }
@@ -42,11 +47,12 @@ export class ListBooksComponent implements OnInit {
     else this.getBooksByKeyword(keyword);
   }
 
-  getAllActiveBooks(): void {
+  getAllActiveBooks(page: number): void {
     this.isLoading = true;
-    this.bookService.getAllActiveBooks().subscribe(
+    this.bookService.getAllActiveBooks(page).subscribe(
       data => {
         this.books = data.content;
+        this.setPagination(data);
         this.isLoading = false;
       },
       err => console.log(err)
@@ -58,6 +64,7 @@ export class ListBooksComponent implements OnInit {
     this.bookService.getBooksByKeyword(keyword).subscribe(
       data => {
         this.books = data.content;
+        this.setPagination(data);
         this.isLoading = false;
       },
       err => console.log(err)
@@ -67,9 +74,8 @@ export class ListBooksComponent implements OnInit {
   getBooksByAuthor(authorName: string): void {
     this.bookService.getBooksByAuthor(authorName).subscribe(
       data => {
-        console.log(data.content);
-        
         this.books = data.content;
+        this.setPagination(data);
         this.isLoading = false;
       },
       err => console.log(err)
@@ -77,6 +83,27 @@ export class ListBooksComponent implements OnInit {
   }
 
   // ---------------------------------------
+  
+  changePage(i: number) {
+    this.currentPage = i;
+    this.getAllActiveBooks(i);
+    this.scrollToTop();
+  }
+
+  setPagination(data: any){
+    this.totalPages = new Array(data.totalPages);
+    this.totalPagesLength = this.totalPages.length;
+  }
+  
+  scrollToTop(): void {
+    const element = document.getElementById('search-books');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
 
   validateParams(ngForm: NgForm) {
     const formValue = ngForm.value;

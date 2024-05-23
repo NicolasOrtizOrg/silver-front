@@ -91,6 +91,28 @@
                 </tr>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <button (click)="changePage(currentPage -1)" class="border-0 bg-secondary bg-gradient text-bg-dark page-link" href="#">
+                Anterior
+              </button>
+            </li>
+    
+            <!-- Números paginación -->
+            <li *ngFor="let page of totalPages; index as i" class="page-item">
+              <button (click)="changePage(i)" class="border-0 bg-dark bg-gradient text-bg-dark page-link" href="#">
+                {{ i + 1 }}
+              </button>
+            </li>
+    
+            <li class="page-item">
+              <button (click)="changePage(currentPage -1)" class="border-0 bg-secondary bg-gradient text-bg-dark page-link" href="#">
+                Siguiente
+              </button>
+            </li>
+          </ul>
+        </nav>
     </div>
     <div class="card-footer text-body-secondary">
 
