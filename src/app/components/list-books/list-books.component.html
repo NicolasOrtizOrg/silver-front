@@ -56,7 +56,7 @@
 
         <!-- Números paginación -->
         <li *ngFor="let page of totalPages; index as i" class="page-item">
-          <button (click)="changePage(i)" class="border-0 bg-dark bg-gradient text-bg-dark page-link" href="#">
+          <button (click)="changePage(i)" [ngClass]="{'bg-black': currentPage == i, 'bg-dark': currentPage !== i}" class="border-0 bg-dark bg-gradient text-bg-dark page-link" href="#">
             {{ i + 1 }}
           </button>
         </li>
