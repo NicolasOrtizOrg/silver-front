@@ -36,6 +36,8 @@ export class CardBookComponent implements OnInit {
         },
         err => console.log(err)
       )
+    } else {
+      this.addBook(book.id, playlistId);
     }
   }
 
