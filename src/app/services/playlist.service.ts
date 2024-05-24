@@ -22,6 +22,10 @@ export class PlaylistService {
     return this.http.get<Playlist[]>(this.URL);
   }
 
+  getById(playlistId: number): Observable<any> {
+    return this.http.get<Playlist>(`${this.URL}/${playlistId}`);
+  }
+
   addBook(bookId: number, playlistId: number): Observable<any> {
     return this.http.post(`${this.URL}/add-book`, null, {
       params: {

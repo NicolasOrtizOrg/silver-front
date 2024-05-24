@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Playlist } from 'src/app/models/Playlist';
+import { PlaylistBooks } from 'src/app/models/PlaylistBooks';
 import { PlaylistService } from 'src/app/services/playlist.service';
 
 @Component({
@@ -11,7 +12,20 @@ export class CardPlaylistComponent {
 
   @Input() playlist: Playlist = new Playlist();
 
+  bookList: PlaylistBooks = new PlaylistBooks();
+
   constructor(private playlistService: PlaylistService){}
+
+  getById(playlistId: number){
+    this.playlistService.getById(playlistId).subscribe(
+      data => {
+        this.bookList = data;
+        console.log(data);
+        
+      },
+      err => console.log(err)
+    )
+  }
 
   deletePlaylist(playlistId: number){
     this.playlistService.deletePlaylist(playlistId).subscribe(

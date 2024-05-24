@@ -6,7 +6,10 @@
         </div>
         <div class="col-md-8">
             <div class="card-body d-flex flex-column justify-content-between">
-                <h5 class="card-title">{{playlist.name}}</h5>
+                <button (click)="getById(playlist.id)" class="btn text-white" data-bs-toggle="modal"
+                [attr.data-bs-target]="'#booksModal-' + playlist.id">
+                    <h5 class="card-title">{{playlist.name}}</h5>
+                </button>
                 <span class="badge text-bg-custom position-absolute bottom-0 mb-2">{{playlist.totalBooks}} libros</span>
                 <span class="position-absolute bottom-0 end-0">
                     <div class="dropdown">
@@ -22,5 +25,33 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- MODAL Libros en la playlist -->
+<div class="modal fade" [id]="'booksModal-' + playlist.id" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Agregar a playlist
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let b of bookList.books" class="list-group mb-1">
+                    <button
+                        class="list-group-item list-group-item-action list-group-item-dark" data-bs-dismiss="modal">
+                        {{ b.title }}
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
+        </div>
     </div>
 </div>
